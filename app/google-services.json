@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "321767322520",
+    "firebase_url": "https://da5-hieu-default-rtdb.firebaseio.com",
+    "project_id": "da5-hieu",
+    "storage_bucket": "da5-hieu.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:321767322520:android:8cc0ec2a7429300e3f71ed",
+        "android_client_info": {
+          "package_name": "com.example.da_5"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-IbzsEYsHrCgnYt0_NUc5j5fPb8kAFr8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

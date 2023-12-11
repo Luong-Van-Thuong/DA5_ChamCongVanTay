@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity3">
+
+    <LinearLayout
+        android:layout_width="379dp"
+        android:layout_height="705dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/etIdLuong"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Nhâp id muốn tính lương"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/etThangLuong"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Nhập tháng muốn tính lương"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/etNamLuong"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Nhập năm muốn tính lương"
+            android:inputType="text" />
+
+        <Button
+            android:id="@+id/btnTingLuong"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Lương theo tháng" />
+
+        <Button
+            android:id="@+id/btnTinhLuongGio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Lương theo giờ" />
+
+        <Button
+            android:id="@+id/btnHome1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Home" />
+
+        <TextView
+            android:id="@+id/textTongLuong"
+            android:layout_width="match_parent"
+            android:layout_height="36dp" />
+
+        <TextView
+            android:id="@+id/textSoNgayLam"
+            android:layout_width="match_parent"
+            android:layout_height="45dp" />
+
+        <ListView
+            android:id="@+id/lsngathang"
+            android:layout_width="match_parent"
+            android:layout_height="313dp" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
