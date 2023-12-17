@@ -6,4 +6,72 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity5">
 
+    <LinearLayout
+        android:layout_width="351dp"
+        android:layout_height="706dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="9dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Kiểm tra ngày giờ"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etIDKiemTraNgayGio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Nhập id "
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/etNhapThangKiemTra"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Nhập tháng"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/etNhapNamKiemTra"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Nhập năm"
+            android:inputType="text" />
+
+        <Button
+            android:id="@+id/btnNgayDiMuon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ngày đi muộn" />
+
+        <Button
+            android:id="@+id/btnNgayDiLam"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ngày đi làm" />
+
+        <ListView
+            android:id="@+id/lsHienThi"
+            android:layout_width="match_parent"
+            android:layout_height="372dp" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Home" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

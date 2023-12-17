@@ -7,8 +7,8 @@
     tools:context=".MainActivity2">
 
     <LinearLayout
-        android:layout_width="324dp"
-        android:layout_height="688dp"
+        android:layout_width="309dp"
+        android:layout_height="654dp"
         android:layout_marginStart="1dp"
         android:layout_marginEnd="1dp"
         android:layout_marginBottom="1dp"
@@ -17,6 +17,42 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textView18"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Chọn chức năng"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/editIDCanDung"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Nhập id cần dùng"
+            android:inputType="text" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnThemIDNew"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Thêm" />
+
+            <Button
+                android:id="@+id/btnXoaID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Xoa" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/textView2"
@@ -29,22 +65,21 @@
 
         <TextView
             android:id="@+id/textView6"
-            android:layout_width="297dp"
-            android:layout_height="37dp"
-            android:text="  ID "
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:textSize="20sp"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textId"
             android:layout_width="match_parent"
-            android:layout_height="34dp" />
+            android:layout_height="34dp"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/textView8"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="  Nhập tên phù hợp với id trên"
             android:textSize="20sp" />
 
         <EditText
@@ -72,21 +107,16 @@
             android:layout_height="wrap_content"
             android:text="Home" />
 
-        <TextView
-            android:id="@+id/textView7"
-            android:layout_width="match_parent"
-            android:layout_height="56dp" />
-
         <ListView
             android:id="@+id/listView"
             android:layout_width="match_parent"
-            android:layout_height="236dp" />
+            android:layout_height="170dp" />
 
         <Button
             android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:text="Show danh sách" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

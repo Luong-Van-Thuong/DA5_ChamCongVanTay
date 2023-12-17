@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -28,13 +29,17 @@ public class MainActivity3 extends AppCompatActivity {
     Button btnTingLuong, btnTinhLuongGio, btnhome;
     ListView listView;
     TextView tongluong, textHienThiNgayGio;
+    ArrayAdapter<String> adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
         addControls();
         tinhLuong();
+
     }
+
+
 
     private void addControls() {
         etIDLuong = findViewById(R.id.etIdLuong);
@@ -46,6 +51,7 @@ public class MainActivity3 extends AppCompatActivity {
         btnTinhLuongGio = findViewById(R.id.btnTinhLuongGio);
         btnhome = findViewById(R.id.btnHome1);
         textHienThiNgayGio = findViewById(R.id.textSoNgayLam);
+
     }
 
     private void tinhLuong(){
@@ -78,13 +84,14 @@ public class MainActivity3 extends AppCompatActivity {
     public double sogiolam() {
         sqlChamCong sqlcc = new sqlChamCong(MainActivity3.this);
         List<objectChamCong> lsqlcc = sqlcc.getEvery();
-        if (lsqlcc != null) {
-            HienThiGioNgayLuong htgiongaylam = new HienThiGioNgayLuong(this, lsqlcc);
-            listView.setAdapter(htgiongaylam);
-            //Toast.makeText(MainActivity3.this, "Chạy hàm hiển thị rồi" , Toast.LENGTH_LONG).show();
-        } else {
-            //Toast.makeText(MainActivity3.this, "Lỗi hàm hiển thị rồi" , Toast.LENGTH_LONG).show();
-        }
+
+//        if (lsqlcc != null) {
+//            HienThiGioNgayLuong htgiongaylam = new HienThiGioNgayLuong(this, lsqlcc);
+//            listView.setAdapter(htgiongaylam);
+//            //Toast.makeText(MainActivity3.this, "Chạy hàm hiển thị rồi" , Toast.LENGTH_LONG).show();
+//        } else {
+//            //Toast.makeText(MainActivity3.this, "Lỗi hàm hiển thị rồi" , Toast.LENGTH_LONG).show();
+//        }
 
         // Lấy dữ liệu từ người dùng nhập vào
 
@@ -164,13 +171,13 @@ public class MainActivity3 extends AppCompatActivity {
     public int songaylam(){
         sqlChamCong sqlcc = new sqlChamCong(MainActivity3.this);
         List<objectChamCong> lsqlcc = sqlcc.getEvery();
-        if (lsqlcc != null) {
-            HienThiGioNgayLuong htgiongaylam = new HienThiGioNgayLuong(this, lsqlcc);
-            listView.setAdapter(htgiongaylam);
-            //Toast.makeText(MainActivity3.this, "Chạy hàm hiển thị rồi" , Toast.LENGTH_LONG).show();
-        } else {
-            //Toast.makeText(MainActivity3.this, "Lỗi hàm hiển thị rồi" , Toast.LENGTH_LONG).show();
-        }
+//        if (lsqlcc != null) {
+//            HienThiGioNgayLuong htgiongaylam = new HienThiGioNgayLuong(this, lsqlcc);
+//            listView.setAdapter(htgiongaylam);
+//            //Toast.makeText(MainActivity3.this, "Chạy hàm hiển thị rồi" , Toast.LENGTH_LONG).show();
+//        } else {
+//            //Toast.makeText(MainActivity3.this, "Lỗi hàm hiển thị rồi" , Toast.LENGTH_LONG).show();
+//        }
 
         // Lấy dữ liệu từ người dùng nhập vào
 
@@ -209,6 +216,9 @@ public class MainActivity3 extends AppCompatActivity {
         String textSoNgay = String.valueOf(soNgayDiLam);
 //        System.out.println("Số ngày khác nhau trong tháng 12 năm 2023 với id 1: " + numUniqueDates);
         textHienThiNgayGio.setText("Số ngày làm được: " + textSoNgay);
+//        List<String> dateList = new ArrayList<>(uniqueDates);
+//        adapter = new ArrayAdapter<>(MainActivity3.this, android.R.layout.simple_list_item_1, dateList);
+//        listView.setAdapter(adapter);
         return soNgayDiLam;
     }
 

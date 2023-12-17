@@ -11,7 +11,7 @@ import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
 
-    ImageView imgDanhSachNV, imgAddNV, imgTinhLuong, imgXemNgayGio;
+    ImageView imgDanhSachNV, imgAddNV, imgTinhLuong, imgXemNgayGio1;
     Button btnCC1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,10 +43,10 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent2);
             }
         });
-        imgXemNgayGio.setOnClickListener(new View.OnClickListener() {
+        imgXemNgayGio1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent3 = new Intent(MainActivity.this, MainActivity4.class);
+                Intent intent3 = new Intent(MainActivity.this, MainActivity5.class);
                 startActivity(intent3);
             }
         });
@@ -55,8 +55,8 @@ public class MainActivity extends AppCompatActivity {
     private void addControls() {
         imgDanhSachNV = findViewById(R.id.imgXemNhanVien);
         imgTinhLuong = findViewById(R.id.imgTinhLuong);
-        imgXemNgayGio = findViewById(R.id.imgXemNgayGio);
+        imgXemNgayGio1 = findViewById(R.id.imgXemNgayGio);
         imgAddNV = findViewById(R.id.imgThemNhanVien);
-        btnCC1 = findViewById(R.id.button2);
+
     }
 }

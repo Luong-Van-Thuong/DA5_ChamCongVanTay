@@ -29,9 +29,9 @@ import java.util.List;
 
 public class MainActivity2 extends AppCompatActivity {
 
-    EditText etName;
+    EditText etName, etIDCanDung;
     TextView textId, textTest;
-    Button btnAddNV, btnHome, btn;
+    Button btnAddNV, btnHome, btn,  btnTTThem, btnTTXoa;
     sqlDSNV sqldsnv;
     ListView listView;
 
@@ -43,6 +43,51 @@ public class MainActivity2 extends AppCompatActivity {
         eventFirebase();
         btnShow();
         btnHOME();
+        btnThemNew();
+        btnXoaID();
+    }
+    public void btnXoaID() {
+
+        btnTTXoa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String idCanDung = etIDCanDung.getText().toString();
+                int idcd = Integer.valueOf(idCanDung);
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                DatabaseReference myRef = database.getReference("TTID");
+                myRef.setValue(3);
+
+                FirebaseDatabase database1 = FirebaseDatabase.getInstance();
+                DatabaseReference myRef1 = database1.getReference("idXoa");
+                myRef1.setValue(idcd);
+
+                sqldsnv.deleteById(idcd);
+
+            }
+        });
+    }
+
+    public void btnThemNew() {
+        // Thực hiện khi bạn muốn gửi dữ liệu
+
+        btnTTThem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String idCanDung = etIDCanDung.getText().toString();
+                int idcd = Integer.valueOf(idCanDung);
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                DatabaseReference myRef = database.getReference("TTID");
+                myRef.setValue(1);
+
+                FirebaseDatabase database1 = FirebaseDatabase.getInstance();
+                DatabaseReference myRef1 = database1.getReference("idThem");
+                myRef1.setValue(idcd);
+            }
+        });
+
+
     }
 
     private void btnHOME() {
@@ -72,6 +117,10 @@ public class MainActivity2 extends AppCompatActivity {
         textTest = findViewById(R.id.textView7);
         listView = findViewById(R.id.listView);
         btn = findViewById(R.id.button);
+        etIDCanDung = findViewById(R.id.editIDCanDung);
+        btnTTThem = findViewById(R.id.btnThemIDNew);
+        btnTTXoa = findViewById(R.id.btnXoaID);
+        sqldsnv = new sqlDSNV(this);
     }
     private void eventBtnFirebase(int id) {
         btnAddNV.setOnClickListener(new View.OnClickListener() {
@@ -81,6 +130,12 @@ public class MainActivity2 extends AppCompatActivity {
                 objectDSNV ob = new objectDSNV(id, name);
                 sqldsnv.addOne(ob);
 //                textTest.setText(ob.getId() + " _ " + ob.getName());
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                DatabaseReference myRef = database.getReference("TTID");
+                myRef.setValue(0);
+                FirebaseDatabase database1 = FirebaseDatabase.getInstance();
+                DatabaseReference myRef1 = database1.getReference("idThem");
+                myRef1.setValue(0);
             }
         });
     }
@@ -92,7 +147,7 @@ public class MainActivity2 extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 int idThem = dataSnapshot.child("idThem").getValue(Integer.class);
                 String stringIdThem = dataSnapshot.child("idThem").getValue().toString().trim();
-                textId.setText(stringIdThem);
+                textId.setText("Nhập tên cho ID: " + stringIdThem);
                 sqldsnv = new sqlDSNV(MainActivity2.this);
 //                Toast.makeText(MainActivity2.this, 1 , Toast.LENGTH_LONG).show();
                 eventBtnFirebase(idThem);

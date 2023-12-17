@@ -67,6 +67,17 @@ public class sqlDSNV  extends SQLiteOpenHelper {
         dbListDSNV.close();
         return returnList;
     }
+    public void deleteById(int id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        int deletedRows = db.delete(CUSTOMER_TABLE, CUSTOMER_ID + "=?", new String[]{String.valueOf(id)});
+        db.close();
+
+        if (deletedRows > 0) {
+            Toast.makeText(context, "Xóa dữ liệu thành công", Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(context, "Không tìm thấy dữ liệu để xóa", Toast.LENGTH_LONG).show();
+        }
+    }
 
 }
 

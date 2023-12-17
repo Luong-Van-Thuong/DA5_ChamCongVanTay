@@ -21,9 +21,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity4 extends AppCompatActivity {
-    Button btnHome, btnChamCong;
-    EditText etGio, etPhut, etNgay, etThang, etNam;
-    TextView tgio, tngaythang, textID1;
+    Button btnHome, btnChamCong, btnKTID;
+    EditText etGio, etPhut, etNgay, etThang, etNam, etIDCC;
+    TextView tgio, tngaythang, textID1, kiemTraId;
     sqlChamCong sqlCC;
     objectChamCong obCC;
     @Override
@@ -33,6 +33,24 @@ public class MainActivity4 extends AppCompatActivity {
         addControls();
         btnH();
         eventFirebase();
+        btnKiemTraId();
+    }
+
+    private void btnKiemTraId() {
+        btnKTID.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String idKiemTra = etIDCC.getText().toString();
+                int idkt = Integer.valueOf(idKiemTra);
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                DatabaseReference myRef = database.getReference("TTID");
+                myRef.setValue(2);
+
+                FirebaseDatabase database1 = FirebaseDatabase.getInstance();
+                DatabaseReference myRef1 = database1.getReference("idMuonChamCong");
+                myRef1.setValue(idkt);
+            }
+        });
     }
 
     private void eventAdd(int id) {
@@ -66,7 +84,13 @@ public class MainActivity4 extends AppCompatActivity {
                 tngaythang.setText(ngaythangnam);
                 obCC = new objectChamCong(id, thoigian, ngaythangnam);
                 sqlCC.addOne(obCC);
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                DatabaseReference myRef = database.getReference("TTID");
+                myRef.setValue(0);
 
+                FirebaseDatabase database1 = FirebaseDatabase.getInstance();
+                DatabaseReference myRef1 = database1.getReference("idMuonChamCong");
+                myRef1.setValue(0);
             }
         });
     }
@@ -82,6 +106,9 @@ public class MainActivity4 extends AppCompatActivity {
         etNam = findViewById(R.id.etNhapNam);
         tgio = findViewById(R.id.textView11);
         tngaythang = findViewById(R.id.textView12);
+        etIDCC = findViewById(R.id.edIDMuonCC);
+        btnKTID = findViewById(R.id.btnKiemTraID);
+        kiemTraId = findViewById(R.id.textView19);
     }
     private void btnH() {
         btnHome.setOnClickListener(new View.OnClickListener() {
@@ -101,9 +128,16 @@ public class MainActivity4 extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 int idChamCong = dataSnapshot.child("idChamCong").getValue(Integer.class);
                 String stringIdChamCong = dataSnapshot.child("idChamCong").getValue().toString().trim();
-                sqlCC = new sqlChamCong(MainActivity4.this);
-                textID1.setText(stringIdChamCong);
-                eventAdd(idChamCong);
+                int idMuonChamCong = dataSnapshot.child("idMuonChamCong").getValue(Integer.class);
+                if(idMuonChamCong != idChamCong) {
+                    kiemTraId.setText("Không tìm thấy Id muốn chấm công");
+                } else {
+                    sqlCC = new sqlChamCong(MainActivity4.this);
+                    kiemTraId.setText("Tìm thấy id");
+                    textID1.setText("ID muốn chấm công: " + stringIdChamCong);
+                    eventAdd(idChamCong);
+                }
+
             }
             @Override
             public void onCancelled(DatabaseError error) {
