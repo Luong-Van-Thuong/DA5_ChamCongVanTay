@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -29,6 +30,7 @@ public class MainActivity5 extends AppCompatActivity {
     sqlChamCong sqlcc;
     ListView lv;
     ArrayAdapter<String> adapter;
+    TextView hienthi;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,7 +61,7 @@ public class MainActivity5 extends AppCompatActivity {
         sqlcc = new sqlChamCong(this);
         lv = findViewById(R.id.lsHienThi);
         btnhome = findViewById(R.id.button3);
-
+        hienthi = findViewById(R.id.textView14);
     }
     public void ngayDiLam(){
         btnDiLam.setOnClickListener(new View.OnClickListener() {
@@ -91,6 +93,8 @@ public class MainActivity5 extends AppCompatActivity {
                 List<String> dateList = new ArrayList<>(uniqueDates);
                 adapter = new ArrayAdapter<>(MainActivity5.this, android.R.layout.simple_list_item_1, dateList);
                 lv.setAdapter(adapter);
+                int songay = dateList.size();
+                hienthi.setText("Số ngày đi làm: " + String.valueOf(songay));
             }
         });
     }
@@ -131,23 +135,23 @@ public class MainActivity5 extends AppCompatActivity {
                         }
                     }
                 }
-            List<String> mindates = new ArrayList<>();
-            for (Map.Entry<String, List<Date>> entry : timesByDate.entrySet()) {
-                String date = entry.getKey();
-                List<Date> timesOnDate = entry.getValue();
-
-                if (timesOnDate.size() >= 2) {
-                    Collections.sort(timesOnDate);
-                    Date minTime = timesOnDate.get(0);
-                    if (minTime.getHours() > 7 || (minTime.getHours() == 7 && minTime.getMinutes() > 0)) {
-                        mindates.add(date + " - " + minTime.getHours() + ":" + minTime.getMinutes());
+                List<String> mindates = new ArrayList<>();
+                for (Map.Entry<String, List<Date>> entry : timesByDate.entrySet()) {
+                    String date = entry.getKey();
+                    List<Date> timesOnDate = entry.getValue();
+                    if (timesOnDate.size() >= 2) {
+                        Collections.sort(timesOnDate);
+                        Date minTime = timesOnDate.get(0);
+                        if (minTime.getHours() > 7 || (minTime.getHours() == 7 && minTime.getMinutes() > 0)) {
+                            mindates.add(date + " - " + minTime.getHours() + ":" + minTime.getMinutes());
+                        }
                     }
                 }
-
-            }
                 List<String> dateList = new ArrayList<>(mindates);
                 adapter = new ArrayAdapter<>(MainActivity5.this, android.R.layout.simple_list_item_1, dateList);
                 lv.setAdapter(adapter);
+                int songay = dateList.size();
+                hienthi.setText("Số ngày đi muộn: " + String.valueOf(songay));
             }
         });
     }

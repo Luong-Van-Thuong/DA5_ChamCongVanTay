@@ -40,8 +40,8 @@ public class Adapter1Nguoi extends ArrayAdapter<objectDSNV> {
         TextView tvId = convertView.findViewById(R.id.id1Nguoi);
         TextView tvName = convertView.findViewById(R.id.name1Nguoi);
         // Chu ý chuyển đổi dữ liệu thành String rồi ms dc setText
-        tvId.setText(String.valueOf(ob.getId()));
-        tvName.setText(ob.getName());
+        tvId.setText("ID người dùng: " + String.valueOf(ob.getId()));
+        tvName.setText(" Tên người dùng: " + ob.getName());
         return convertView;
     }
 }

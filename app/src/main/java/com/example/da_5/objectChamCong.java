@@ -19,10 +19,10 @@ public class objectChamCong {
         this.id = id;
     }
 
+
     public String getThoigian() {
         return thoigian;
     }
-
     public void setThoigian(String thoigian) {
         this.thoigian = thoigian;
     }

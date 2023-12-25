@@ -67,6 +67,7 @@ public class sqlDSNV  extends SQLiteOpenHelper {
         dbListDSNV.close();
         return returnList;
     }
+
     public void deleteById(int id) {
         SQLiteDatabase db = this.getWritableDatabase();
         int deletedRows = db.delete(CUSTOMER_TABLE, CUSTOMER_ID + "=?", new String[]{String.valueOf(id)});
